@@ -1,0 +1,128 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.app-container {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .header {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding-top: 1rem;
+    margin-bottom: 1rem;
+    color: #d32f2f;
+    opacity: 0.8;
+  }
+  
+  .shops-container {
+    margin-top: 1rem;
+    /* padding: 0 10px; */
+    margin-bottom: 50px;
+  }
+  
+  .shop-card {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    /* box-shadow: 0 0px 0px rgba(0,0,0,0.05); */
+    margin-bottom: 1.2rem;
+    padding: 1rem;
+    background-color: #fff;
+    opacity: 0;
+    /* transform: translateY(10px); */
+    animation: fadeInUp 1s ease forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      /* transform: translateY(0); */
+    }
+  }
+  
+  .shop-photo {
+    width: 100%;
+    border-radius: 6px ;
+    margin-bottom: 0rem;
+    object-fit: cover;
+    height: 180px;
+  }
+  
+  .update-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 0.8rem;
+    background-color: #d32f2f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 320px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    max-width: calc(100% - 20px);
+  }
+  
+
+  h3 {
+    margin-top: 5px !important;
+    margin-bottom: 0px !important;
+    color: #333;
+    font-size: 1rem;
+  }
+
+  p {
+    margin-top: 5px !important; 
+    margin-bottom: 0px !important;
+    color: #333;
+    font-size: 0.8rem;
+  }
+
+  .shops-startText {
+    text-align: center;
+    color: #333;
+    margin-top: 10rem !important;
+  }
+
+  .loading-indicator {
+    text-align: center;
+    color: #d32f2f;
+    margin: 2rem 0;
+    font-size: 1rem;
+  }
+  
+  .spinner {
+    margin: 0 auto 0.5rem;
+    width: 32px;
+    height: 32px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #d32f2f;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* ← これが追加分！ */
+.update-button.loading {
+    background-color: #aaa;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }

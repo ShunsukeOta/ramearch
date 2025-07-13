@@ -4,10 +4,12 @@ export const fetchRamenShops = async (lat: number, lng: number) => {
     const keyword = 'ラーメン';
     const type = 'restaurant';
   
-    const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=${radius}&type=${type}&keyword=${keyword}&key=${apiKey}`;
-  
-    const proxy = 'https://cors-anywhere.herokuapp.com/';
-    const res = await fetch(proxy + url);
+    // const proxy = 'https://cors-anywhere.herokuapp.com/';
+    const proxy = 'https://ramearch.ootsnsk.workers.dev/?url=';
+
+    const targetUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=${radius}&type=${type}&keyword=${keyword}&key=${apiKey}`;
+
+    const res = await fetch(proxy + encodeURIComponent(targetUrl));
   
     if (!res.ok) throw new Error('API取得に失敗');
   

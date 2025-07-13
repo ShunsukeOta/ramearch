@@ -9,30 +9,44 @@ function App() {
   const [shops, setShops] = useState<any[]>([]);
 const [loading, setLoading] = useState(false);
 
+const handleUpdate = async () => {
+  setLoading(true);
+  updatePosition();
 
-  const handleUpdate = async () => {
-    setLoading(true);
-    updatePosition();
-  
-    setTimeout(async () => {
-      try {
-        if (position) {
-          const data = await fetchRamenShops(position.latitude, position.longitude);
-          setShops(data);
-        } else {
-          console.warn('まだ位置情報が取得できていません');
-        }
-      } catch (error) {
-        console.error('データ取得エラー:', error);
-      } finally {
-        setLoading(false); // ← tryでもcatchでも確実に止める
+  setTimeout(async () => {
+    try {
+      if (position) {
+        const data = await fetchRamenShops(position.latitude, position.longitude);
+
+        // 距離計算 & 近い順に並び替えて5件だけ抽出
+        const sorted = data
+          .map((shop: any) => {
+            const shopLat = shop.geometry?.location?.lat;
+            const shopLng = shop.geometry?.location?.lng;
+            const distance = (shopLat && shopLng)
+              ? getDistanceFromLatLonInKm(position.latitude, position.longitude, shopLat, shopLng)
+              : Infinity;
+
+            return { ...shop, distance };
+          })
+          .sort((a: any, b: any) => a.distance - b.distance)
+          .slice(0, 5);
+
+        setShops(sorted);
+      } else {
+        console.warn('まだ位置情報が取得できていません');
       }
-    }, 1000);
-  };
+    } catch (error) {
+      console.error('データ取得エラー:', error);
+    } finally {
+      setLoading(false);
+    }
+  }, 1000);
+};
 
   return (
     <div className="app-container">
-      <header className="header">近ラーメン検索</header>
+      <header className="header">近ラーメン検索 ver0.1</header>
 
       <div className="shops-container">
       {/* {loading && (
@@ -43,20 +57,20 @@ const [loading, setLoading] = useState(false);
 )} */}
   {shops.length === 0 ? (
     <p className="shops-startText" >
-      下のボタンを押して近くのラーメン屋を検索！
+      下のボタンを押して<br />近くのラーメン屋を検索できます。
     </p>
   ) : (
     shops.map((shop, index) => {
       // 位置情報と店舗情報から距離計算
-      const distanceKm =
-        position && shop.geometry && shop.geometry.location
-          ? getDistanceFromLatLonInKm(
-              position.latitude,
-              position.longitude,
-              shop.geometry.location.lat,
-              shop.geometry.location.lng
-            ).toFixed(2)
-          : '距離不明';
+      // const distanceKm =
+      //   position && shop.geometry && shop.geometry.location
+      //     ? getDistanceFromLatLonInKm(
+      //         position.latitude,
+      //         position.longitude,
+      //         shop.geometry.location.lat,
+      //         shop.geometry.location.lng
+      //       ).toFixed(2)
+      //     : '距離不明';
 
       return (
         <div key={index} className="shop-card">
@@ -71,7 +85,7 @@ const [loading, setLoading] = useState(false);
             />
           )}
           <h3>{shop.name}</h3>
-          <p>距離：{distanceKm} km</p>
+          <p>距離：{shop.distance?.toFixed(2)} km</p>
         </div>
       );
     })

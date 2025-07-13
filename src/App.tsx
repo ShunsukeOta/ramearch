@@ -45,7 +45,7 @@ function App() {
 
   return (
     <div className="app-container">
-      <header className="header">近ラーメン検索 ver0.1</header>
+      <header className="header">近ラーメン検索</header>
       <div className="shops-container">
 
         {!loading && shops.length === 0 && (
@@ -62,6 +62,7 @@ function App() {
       >
         {loading ? '更新中...' : '近くのラーメン屋を検索'}
       </button>
+      <p className="copyright-text">&copy; ootsnsk 2025</p>
     </div>
   );
 }

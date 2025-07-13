@@ -13,6 +13,7 @@ body {
     margin: 0 auto;
     padding: 15px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
   }
   
   .header {
@@ -28,14 +29,14 @@ body {
   .shops-container {
     margin-top: 1rem;
     /* padding: 0 10px; */
-    margin-bottom: 50px;
+    margin-bottom: 90px;
   }
   
   .shop-card {
     border: 1px solid #ddd;
     border-radius: 4px;
     /* box-shadow: 0 0px 0px rgba(0,0,0,0.05); */
-    margin-bottom: 1.2rem;
+    margin-bottom: 15px;
     padding: 1rem;
     background-color: #fff;
     opacity: 0;
@@ -68,7 +69,7 @@ body {
     border-radius: 4px;
     cursor: pointer;
     position: fixed;
-    bottom: 10px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     max-width: 320px;
@@ -174,4 +175,14 @@ body {
     font-size: 0.8em;
     color: #333;
   }
+}
+
+.copyright-text {
+  font-size: 0.6em;
+  color: #aaa;
+  text-align: center;
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  right: 0;
 }

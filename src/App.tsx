@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useGeolocation } from './hooks/useGeolocation';
 import { fetchRamenShops } from './api/fetchRamen';
 import { getDistanceFromLatLonInKm } from './utils/distance';
-import './styles/App.css';
+import './styles/App.scss';
 
 import { ShopCard } from './components/ShopCard';
 
@@ -46,6 +46,7 @@ function App() {
     <div className="app-container">
       <header className="header">近ラーメン検索 ver0.1</header>
       <div className="shops-container">
+
         {!loading && shops.length === 0 && (
           <p className="shops-startText">下のボタンを押して<br />近くのラーメン屋を検索できます。</p>
         )}

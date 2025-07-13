@@ -1,5 +1,5 @@
 export const fetchRamenShops = async (lat: number, lng: number) => {
-    const apiKey = 'AIzaSyAcpyH-D-WroARVMBCh_sWQUdEiF7hzRUk'; // 自分のAPIキーに差し替えてね！
+    const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY; // 自分のAPIキーに差し替えてね！
     const radius = 1500; // 1.5km
     const keyword = 'ラーメン';
     const type = 'restaurant';

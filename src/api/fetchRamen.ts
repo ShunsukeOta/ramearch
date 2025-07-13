@@ -14,5 +14,5 @@ export const fetchRamenShops = async (lat: number, lng: number) => {
     if (!res.ok) throw new Error('API取得に失敗');
   
     const data = await res.json();
-    return data.results.slice(0, 5); // 上位5件のみ
+    return data.results.slice(0, 8); // 上位5件のみ
   };

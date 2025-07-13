@@ -6,7 +6,6 @@ import './styles/App.scss';
 
 import { ShopCard } from './components/ShopCard';
 
-import { useEffect } from 'react';
 
 
 
@@ -32,7 +31,7 @@ function App() {
             return { ...shop, distance };
           })
           .sort((a:any, b: any) => a.distance - b.distance)
-          .slice(0, 5);
+          .slice(0, 8);
         setShops(sorted);
       } else {
         console.warn('位置情報がまだありません');

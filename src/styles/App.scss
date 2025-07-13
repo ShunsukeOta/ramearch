@@ -33,7 +33,7 @@ body {
   
   .shop-card {
     border: 1px solid #ddd;
-    border-radius: 6px;
+    border-radius: 4px;
     /* box-shadow: 0 0px 0px rgba(0,0,0,0.05); */
     margin-bottom: 1.2rem;
     padding: 1rem;
@@ -52,7 +52,7 @@ body {
   
   .shop-photo {
     width: 100%;
-    border-radius: 6px ;
+    border-radius: 4px ;
     margin-bottom: 0rem;
     object-fit: cover;
     height: 180px;
@@ -60,12 +60,12 @@ body {
   
   .update-button {
     width: 100%;
-    padding: 12px;
+    padding: 20px 12px;
     font-size: 0.8rem;
     background-color: #d32f2f;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 4px;
     cursor: pointer;
     position: fixed;
     bottom: 10px;
@@ -82,6 +82,7 @@ body {
     margin-bottom: 0px !important;
     color: #333;
     font-size: 1rem;
+    max-width: calc(100% - 90px);
   }
 
   p {
@@ -156,6 +157,7 @@ body {
 }
 
 .open-status {
+  display: flex;
   margin-top: 0px !important; 
   margin-left: 10px;
   &.open {

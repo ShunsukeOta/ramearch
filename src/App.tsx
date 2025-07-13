@@ -6,6 +6,8 @@ import './styles/App.scss';
 
 import { ShopCard } from './components/ShopCard';
 
+import { useEffect } from 'react';
+
 
 
 const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY; // 自分のAPIキーに差し替えてね！
@@ -64,4 +66,6 @@ function App() {
     </div>
   );
 }
+
+
 export default App;
